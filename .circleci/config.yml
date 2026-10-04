@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/python:3.13
+
+    steps:
+      - checkout
+
+      - run:
+          name: Run unit tests
+          command: python3 -m unittest repositoryTest.py
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+
