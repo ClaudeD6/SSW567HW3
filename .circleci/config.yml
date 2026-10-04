@@ -1,10 +1,4 @@
-      - run:
-          name: Install dependencies
-          command: python3 -m pip install requests
-
-      - run:
-          name: Run unit tests
-          command: python3 -m unittest repositoryTest.pyversion: 2.1
+version: 2.1
 
 jobs:
   build:
@@ -15,6 +9,10 @@ jobs:
       - checkout
 
       - run:
+          name: Install dependencies
+          command: python3 -m pip install requests
+
+      - run:
           name: Run unit tests
           command: python3 -m unittest repositoryTest.py
 
@@ -22,4 +20,3 @@ workflows:
   build_and_test:
     jobs:
       - build
-
