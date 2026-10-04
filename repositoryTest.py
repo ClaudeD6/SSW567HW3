@@ -8,6 +8,7 @@ class TestGitHubAPI(unittest.TestCase):
 
     @patch("ssw567assignment3_1.requests.get")
     def test_valid_user(self, mock_get):
+
         repositories_response = Mock()
         repositories_response.status_code = 200
         repositories_response.text = '[{"name": "Triangle567"}, {"name": "Square567"}]'
@@ -35,8 +36,10 @@ class TestGitHubAPI(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
+
     @patch("ssw567assignment3_1.requests.get")
     def test_invalid_user(self, mock_get):
+
         response = Mock()
         response.status_code = 404
 
@@ -46,8 +49,10 @@ class TestGitHubAPI(unittest.TestCase):
 
         self.assertEqual(result, [])
 
+
     @patch("ssw567assignment3_1.requests.get")
     def test_user_with_no_repositories(self, mock_get):
+
         response = Mock()
         response.status_code = 200
         response.text = "[]"
@@ -58,8 +63,10 @@ class TestGitHubAPI(unittest.TestCase):
 
         self.assertEqual(result, [])
 
+
     @patch("ssw567assignment3_1.requests.get")
     def test_repository_with_no_commits(self, mock_get):
+
         repositories_response = Mock()
         repositories_response.status_code = 200
         repositories_response.text = '[{"name": "EmptyRepo"}]'
@@ -76,8 +83,7 @@ class TestGitHubAPI(unittest.TestCase):
         result = get_repositories("testuser")
 
         expected = [
-            ("EmptyRepo", 0)
-        ]
+            ("EmptyRepo", 0) ]
 
         self.assertEqual(result, expected)
 
