@@ -1,4 +1,10 @@
-version: 2.1
+      - run:
+          name: Install dependencies
+          command: python3 -m pip install requests
+
+      - run:
+          name: Run unit tests
+          command: python3 -m unittest repositoryTest.pyversion: 2.1
 
 jobs:
   build:
